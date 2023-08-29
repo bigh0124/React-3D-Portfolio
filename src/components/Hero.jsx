@@ -73,7 +73,14 @@ const Right = styled.div`
 `;
 
 const HeroImg = styled.img`
+  width: 600px;
   object-fit: cover;
+  animation: animate 2s infinite ease alternate;
+  @keyframes animate {
+    to {
+      transform: translateY(-20px);
+    }
+  }
 `;
 
 const Hero = () => {
