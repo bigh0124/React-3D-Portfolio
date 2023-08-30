@@ -4,24 +4,24 @@ import MapChart from "./MapChart";
 const Section = styled.div`
   height: 100vh;
   scroll-snap-align: center;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; */
 `;
 
 const Container = styled.div`
-  width: 1400px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 50px;
 `;
 
 const Left = styled.div`
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  width: 400px;
-  gap: 30px;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 const Title = styled.h1`
@@ -33,6 +33,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 400px;
 `;
 
 const Input = styled.input`
@@ -60,7 +61,7 @@ const Button = styled.button`
 `;
 
 const Right = styled.div`
-  width: 600px;
+  flex: 1;
 `;
 
 const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
@@ -70,8 +71,8 @@ const Contact = () => {
     <Section>
       <Container>
         <Left>
-          <Title>Contact us</Title>
           <Form>
+            <Title>Contact us</Title>
             <Input placeholder="Name" />
             <Input placeholder="Email" type="email" />
             <Textarea placeholder="Write your message" rows={10} />

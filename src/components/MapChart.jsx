@@ -10,8 +10,9 @@ const MapChart = () => {
         center: [-5, -3],
         scale: 1100,
       }}
+      style={{ width: "100%", height: "100%" }}
     >
-      <Geographies geography="/features.json" fill="#D6D6DA" stroke="#FFFFFF" strokeWidth={0.5}>
+      <Geographies geography="/features.json" fill="#2c065d" stroke="#FFFFFF" strokeWidth={0.5}>
         {({ geographies }) => geographies.map((geo) => <Geography key={geo.rsmKey} geography={geo} />)}
       </Geographies>
       <Annotation
