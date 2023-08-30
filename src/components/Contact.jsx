@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
-
+import MapChart from "./MapChart";
 const Section = styled.div`
   height: 100vh;
   scroll-snap-align: center;
@@ -12,8 +12,8 @@ const Section = styled.div`
 const Container = styled.div`
   width: 1400px;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
   gap: 50px;
 `;
 
@@ -59,7 +59,11 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Right = styled.div``;
+const Right = styled.div`
+  width: 600px;
+`;
+
+const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
 const Contact = () => {
   return (
@@ -74,7 +78,9 @@ const Contact = () => {
             <Button>Send</Button>
           </Form>
         </Left>
-        <Right>1</Right>
+        <Right>
+          <MapChart />
+        </Right>
       </Container>
     </Section>
   );
