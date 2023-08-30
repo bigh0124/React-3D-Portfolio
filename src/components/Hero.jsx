@@ -1,28 +1,31 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { styled } from "styled-components";
 import Navbar from "./Navbar";
-
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 const Section = styled.div`
   height: 100vh;
+  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  scroll-snap-align: center;
   justify-content: space-between;
 `;
 
 const Container = styled.div`
-  height: 100vh;
+  height: 100%;
+  scroll-snap-align: center;
   width: 1400px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `;
 
 const Left = styled.div`
   display: flex;
+  flex: 2;
   flex-direction: column;
   padding-bottom: 100px;
+  justify-content: center;
 `;
 
 const Title = styled.h1`
@@ -66,19 +69,25 @@ const Button = styled.button`
 `;
 
 const Right = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex: 3;
+  position: relative;
 `;
 
-const HeroImg = styled.img`
-  width: 600px;
-  object-fit: cover;
+const Img = styled.img`
+  width: 800px;
+  height: 600px;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   animation: animate 2s infinite ease alternate;
+
   @keyframes animate {
     to {
-      transform: translateY(-20px);
+      transform: translateY(20px);
     }
   }
 `;
@@ -98,7 +107,17 @@ const Hero = () => {
           <Button>Learn more</Button>
         </Left>
         <Right>
-          <HeroImg src="/img/moon.png" />
+          <Canvas>
+            <Suspense fallback={null}>
+              <OrbitControls enableZoom={false} />
+              <ambientLight intensity={1} />
+              <directionalLight position={[3, 2, 1]} />
+              <Sphere args={[1, 100, 200]} scale={2.4}>
+                <MeshDistortMaterial color="#3d1c56" attach="material" distort={0.5} speed={2} />
+              </Sphere>
+            </Suspense>
+          </Canvas>
+          <Img src="/img/moon.png" />
         </Right>
       </Container>
     </Section>
